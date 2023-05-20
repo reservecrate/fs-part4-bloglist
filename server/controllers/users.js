@@ -12,7 +12,8 @@ usersRouter.get('/', async (req, res) => {
 });
 
 usersRouter.post('/', async (req, res) => {
-  const { username, name, password } = req.body;
+  const name = req.body.name || 'John Doe';
+  const { username, password } = req.body;
   if (!username || !password) {
     return res.status(400).json({ error: 'username/password not given' });
   } else if (username.length < 4 || password.length < 4) {
