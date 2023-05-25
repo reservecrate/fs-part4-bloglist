@@ -18,12 +18,12 @@ beforeEach(async () => {
 describe('valid login', () => {
   test('returns 200 + token when given valid login data', async () => {
     const validLogin = { username: 'reservecrate', password: 'kennwort' };
-    const { body } = await api
+    const { body: loginData } = await api
       .post('/api/login')
       .send(validLogin)
       .expect(200)
       .expect('Content-Type', /application\/json/);
-    const { token } = body;
+    const { token } = loginData;
     expect(token).toBeTruthy();
   });
 });
